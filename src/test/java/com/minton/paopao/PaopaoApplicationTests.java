@@ -1,4 +1,4 @@
-package com.minton.usercenter;
+package com.minton.paopao;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -7,7 +7,7 @@ import org.springframework.util.DigestUtils;
 import java.security.NoSuchAlgorithmException;
 
 @SpringBootTest
-class UserCenterApplicationTests {
+class PaopaoApplicationTests {
 
     @Test
     void testDigest() throws NoSuchAlgorithmException {

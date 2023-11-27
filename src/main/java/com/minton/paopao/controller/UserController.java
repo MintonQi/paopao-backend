@@ -1,14 +1,14 @@
-package com.minton.usercenter.controller;
+package com.minton.paopao.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.minton.usercenter.common.BaseResponse;
-import com.minton.usercenter.common.ErrorCode;
-import com.minton.usercenter.common.ResultUtils;
-import com.minton.usercenter.exception.BusinessException;
-import com.minton.usercenter.model.domain.User;
-import com.minton.usercenter.model.domain.request.UserLoginRequest;
-import com.minton.usercenter.model.domain.request.UserRegisterRequest;
-import com.minton.usercenter.service.UserService;
+import com.minton.paopao.common.BaseResponse;
+import com.minton.paopao.common.ErrorCode;
+import com.minton.paopao.common.ResultUtils;
+import com.minton.paopao.exception.BusinessException;
+import com.minton.paopao.model.domain.User;
+import com.minton.paopao.model.domain.request.UserLoginRequest;
+import com.minton.paopao.model.domain.request.UserRegisterRequest;
+import com.minton.paopao.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.minton.usercenter.contant.UserConstant.ADMIN_ROLE;
-import static com.minton.usercenter.contant.UserConstant.USER_LOGIN_STATE;
+import static com.minton.paopao.contant.UserConstant.ADMIN_ROLE;
+import static com.minton.paopao.contant.UserConstant.USER_LOGIN_STATE;
 
 @RestController
 @RequestMapping("/user")

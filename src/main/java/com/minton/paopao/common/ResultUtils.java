@@ -1,4 +1,4 @@
-package com.minton.usercenter.common;
+package com.minton.paopao.common;
 
 public class ResultUtils {
 

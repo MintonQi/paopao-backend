@@ -1,4 +1,4 @@
-package com.minton.usercenter.model.domain;
+package com.minton.paopao.model.domain;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;

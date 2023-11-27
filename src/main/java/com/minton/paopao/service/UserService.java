@@ -1,6 +1,6 @@
-package com.minton.usercenter.service;
+package com.minton.paopao.service;
 
-import com.minton.usercenter.model.domain.User;
+import com.minton.paopao.model.domain.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import javax.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package com.minton.usercenter.model.domain.request;
+package com.minton.paopao.model.domain.request;
 
 import lombok.Data;
 

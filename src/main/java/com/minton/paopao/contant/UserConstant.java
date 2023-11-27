@@ -1,4 +1,4 @@
-package com.minton.usercenter.contant;
+package com.minton.paopao.contant;
 
 public interface UserConstant {
 

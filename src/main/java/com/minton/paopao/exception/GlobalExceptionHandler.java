@@ -1,8 +1,8 @@
-package com.minton.usercenter.exception;
+package com.minton.paopao.exception;
 
-import com.minton.usercenter.common.BaseResponse;
-import com.minton.usercenter.common.ErrorCode;
-import com.minton.usercenter.common.ResultUtils;
+import com.minton.paopao.common.BaseResponse;
+import com.minton.paopao.common.ErrorCode;
+import com.minton.paopao.common.ResultUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

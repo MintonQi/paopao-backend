@@ -1,6 +1,6 @@
-package com.minton.usercenter.exception;
+package com.minton.paopao.exception;
 
-import com.minton.usercenter.common.ErrorCode;
+import com.minton.paopao.common.ErrorCode;
 
 public class BusinessException extends RuntimeException {
 

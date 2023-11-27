@@ -1,12 +1,12 @@
-package com.minton.usercenter.service.impl;
+package com.minton.paopao.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.minton.usercenter.common.ErrorCode;
-import com.minton.usercenter.exception.BusinessException;
-import com.minton.usercenter.model.domain.User;
-import com.minton.usercenter.service.UserService;
-import com.minton.usercenter.mapper.UserMapper;
+import com.minton.paopao.common.ErrorCode;
+import com.minton.paopao.exception.BusinessException;
+import com.minton.paopao.model.domain.User;
+import com.minton.paopao.service.UserService;
+import com.minton.paopao.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.minton.usercenter.contant.UserConstant.USER_LOGIN_STATE;
+import static com.minton.paopao.contant.UserConstant.USER_LOGIN_STATE;
 
 @Service
 @Slf4j

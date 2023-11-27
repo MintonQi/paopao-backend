@@ -1,15 +1,15 @@
-package com.minton.usercenter;
+package com.minton.paopao;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.minton.usercenter.mapper")
-public class UserCenterApplication {
+@MapperScan("com.minton.paopao.mapper")
+public class PaopaoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(UserCenterApplication.class, args);
+        SpringApplication.run(PaopaoApplication.class, args);
     }
 
 }
