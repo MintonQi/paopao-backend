@@ -2,6 +2,9 @@ package com.minton.paopao.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 import com.minton.paopao.common.ErrorCode;
 import com.minton.paopao.exception.BusinessException;
 import com.minton.paopao.model.domain.User;
@@ -9,13 +12,18 @@ import com.minton.paopao.service.UserService;
 import com.minton.paopao.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.boot.json.GsonJsonParser;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.DigestUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Type;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static com.minton.paopao.contant.UserConstant.USER_LOGIN_STATE;
 
@@ -162,6 +170,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         safetyUser.setUserRole(originUser.getUserRole());
         safetyUser.setUserStatus(originUser.getUserStatus());
         safetyUser.setCreateTime(originUser.getCreateTime());
+        safetyUser.setTags(originUser.getTags());
         return safetyUser;
     }
 
@@ -175,6 +184,47 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         // 移除登录态
         request.getSession().removeAttribute(USER_LOGIN_STATE);
         return 1;
+    }
+
+
+    /**
+     * 查询满足所有给定tag的用户 (SQL 查询)
+     * @param tagsList
+     * @return
+     */
+    @Deprecated
+    private List<User> searchUsersByTagsSQL(List<String> tagsList) {
+        if (CollectionUtils.isEmpty(tagsList)) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        QueryWrapper<User>  queryWrapper = new QueryWrapper<>();
+        tagsList.forEach(tag -> {
+            queryWrapper.like("\"tags\"", tag);
+        });
+        List<User> usersList = userMapper.selectList(queryWrapper);
+        return usersList.stream().map(this::getSafetyUser).collect(Collectors.toList());
+
+    }
+
+    /**
+     *
+     */
+    @Override
+    public List<User> searchUsersByTags(List<String> tagsList) {
+        List<User> usersList = userMapper.selectList(new QueryWrapper<>());
+        Gson gson = new Gson();
+        Type type = new TypeToken<HashSet<User>>(){}.getType();
+
+        return usersList.stream().filter(user -> {
+            Set<String> userTags = gson.fromJson(user.getTags(), type);
+            Set<String> userTagsSet = Optional.ofNullable(userTags).orElse(new HashSet<>());
+            for (String tag : tagsList) {
+                if (userTagsSet.contains(tag)) {
+                    return false;
+                }
+            }
+            return true;
+        }).collect(Collectors.toList());
     }
 
 }
